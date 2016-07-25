@@ -32,33 +32,33 @@
 
         var mainDiv = $("<div/>", {id: "CronGenMainDiv", style: "padding:15px;"});
         var topMenu = $("<ul/>", {"class": "nav nav-tabs", id: "msCronTabs"});
-        $('<li/>', {'class': 'active'}).html($('<a id="msMinutesTab" role="tab" data-toggle="tab" href="#Minutes">Minutes</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msHourlyTab" role="tab" data-toggle="tab" href="#Hourly">Hourly</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msDailyTab" role="tab" data-toggle="tab" href="#Daily">Daily</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msWeeklyTab" role="tab" data-toggle="tab" href="#Weekly">Weekly</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msMonthlyTab" role="tab" data-toggle="tab" href="#Monthly">Monthly</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msYearlyTab" role="tab" data-toggle="tab" href="#Yearly">Yearly</a>')).appendTo(topMenu);
+        $('<li/>', {'class': 'active'}).html($('<a id="msMinutesTab" role="tab" data-toggle="tab" href="#Minutes">Минуты</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msHourlyTab" role="tab" data-toggle="tab" href="#Hourly">Часы</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msDailyTab" role="tab" data-toggle="tab" href="#Daily">Дни</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msWeeklyTab" role="tab" data-toggle="tab" href="#Weekly">Недели</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msMonthlyTab" role="tab" data-toggle="tab" href="#Monthly">Месяцы</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msYearlyTab" role="tab" data-toggle="tab" href="#Yearly">Годы</a>')).appendTo(topMenu);
         $(topMenu).appendTo(mainDiv);
         var tabContent = $("<div/>", {"class": "tab-content"});
         //creating the minutesTab
         var minutesTab = $("<div/>", {"class": "tab-pane active", id: "Minutes"});
         var minutesTabSection = $("<div/>", {"style": "padding:15px"});
-        $(minutesTabSection).append("Every&nbsp;");
+        $(minutesTabSection).append("Каждую&nbsp;");
         $("<input/>", {id: "MinutesInput", type: "text", value: "1", class: "form-control", style: "width: 40px;display:inline"}).appendTo(minutesTabSection);
-        $(minutesTabSection).append("&nbsp;minute(s)");
+        $(minutesTabSection).append("&nbsp;минуту");
         $(minutesTabSection).appendTo(minutesTab);
         $(minutesTab).appendTo(tabContent);
         //creating the hourlyTab
         var hourlyTab = $("<div/>", {"class": "tab-pane", id: "Hourly"});
         var hourlyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "HourlyRadio", checked: "checked"}).appendTo(hourlyOption1);
-        $(hourlyOption1).append("&nbsp;Every&nbsp;");
+        $(hourlyOption1).append("&nbsp;Каждый&nbsp;");
         $("<input/>", {id: "HoursInput", type: "text", class: "form-control", value: "1", style: "width: 40px;display:inline"}).appendTo(hourlyOption1);
-        $(hourlyOption1).append("&nbsp;hour(s)");
+        $(hourlyOption1).append("&nbsp;час");
         $(hourlyOption1).appendTo(hourlyTab);
         var hourlyOption2 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "2", name: "HourlyRadio"}).appendTo(hourlyOption2);
-        $(hourlyOption2).append("&nbsp;At&nbsp;");
+        $(hourlyOption2).append("&nbsp;В&nbsp;");
         $(hourlyOption2).append('<select id="AtHours" class="form-control hours" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(hourlyOption2).append('<select id="AtMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(hourlyOption2).appendTo(hourlyTab);
@@ -67,15 +67,15 @@
         var dailyTab = $("<div/>", {"class": "tab-pane", id: "Daily"});
         var dailyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "DailyRadio", checked: "checked"}).appendTo(dailyOption1);
-        $(dailyOption1).append("&nbsp;Every&nbsp;");
+        $(dailyOption1).append("&nbsp;Каждый&nbsp;");
         $("<input/>", {id: "DaysInput", type: "text", value: "1", class: "form-control", style: "width: 40px;display:inline"}).appendTo(dailyOption1);
-        $(dailyOption1).append("&nbsp;day(s)");
+        $(dailyOption1).append("&nbsp;день");
         $(dailyOption1).appendTo(dailyTab);
         var dailyOption2 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "2", name: "DailyRadio"}).appendTo(dailyOption2);
-        $(dailyOption2).append("&nbsp;Every week day&nbsp;");
+        $(dailyOption2).append("&nbsp;Каждый день недели&nbsp;");
         $(dailyOption2).appendTo(dailyTab);
-        $(dailyTab).append("Start time&nbsp;");
+        $(dailyTab).append("Время&nbsp;");
         $(dailyTab).append('<select id="DailyHours" class="form-control hours" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(dailyTab).append('<select id="DailyMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(dailyTab).appendTo(tabContent);
@@ -84,29 +84,29 @@
         var weeklyWell = $("<div/>", {"style": "padding:15px"});
         var monLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "MON"}).appendTo(monLabel);
-        $(monLabel).append("Monday");
+        $(monLabel).append("Понедельник");
         var tueLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "TUE"}).appendTo(tueLabel);
-        $(tueLabel).append("Tuesday");
+        $(tueLabel).append("Вторник");
         var wedLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "WED"}).appendTo(wedLabel);
-        $(wedLabel).append("Wednesday");
+        $(wedLabel).append("Среда");
         var thuLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "THU"}).appendTo(thuLabel);
-        $(thuLabel).append("Thursday");
+        $(thuLabel).append("Четверг");
         var friLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "FRI"}).appendTo(friLabel);
-        $(friLabel).append("Friday");
+        $(friLabel).append("Пятница");
         var satLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "SAT"}).appendTo(satLabel);
-        $(satLabel).append("Saturday");
+        $(satLabel).append("Суббота");
         var sunLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "SUN"}).appendTo(sunLabel);
-        $(sunLabel).append("Sunday");
+        $(sunLabel).append("Воскресенье");
 
         //Hack to fix the well box
         $(weeklyWell).appendTo(weeklyTab);
-        $(weeklyTab).append("Start time&nbsp;");
+        $(weeklyTab).append("Время&nbsp;");
         $(weeklyTab).append('<select id="WeeklyHours" class="form-control hours" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(weeklyTab).append('<select id="WeeklyMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(weeklyTab).appendTo(tabContent);
@@ -114,22 +114,22 @@
         var monthlyTab = $("<div/>", {"class": "tab-pane", id: "Monthly"});
         var monthlyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "MonthlyRadio", checked: "checked"}).appendTo(monthlyOption1);
-        $(monthlyOption1).append("&nbsp;Day&nbsp");
+        $(monthlyOption1).append("&nbsp;День&nbsp");
         $("<input/>", {id: "DayOfMOnthInput", type: "text", class: "form-control", value: "1", style: "width: 40px;display:inline"}).appendTo(monthlyOption1);
-        $(monthlyOption1).append("&nbsp;of every&nbsp;");
+        $(monthlyOption1).append("&nbsp;каждого&nbsp;");
         $("<input/>", {id: "MonthInput", type: "text", class: "form-control", value: "1", style: "width: 40px;display:inline;"}).appendTo(monthlyOption1);
-        $(monthlyOption1).append("&nbsp;month(s)");
+        $(monthlyOption1).append("&nbsp;месяца");
         $(monthlyOption1).appendTo(monthlyTab);
         var monthlyOption2 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "2", name: "MonthlyRadio"}).appendTo(monthlyOption2);
         $(monthlyOption2).append("&nbsp;");
         $(monthlyOption2).append('<select id="WeekDay" class="form-control day-order-in-month" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(monthlyOption2).append('<select id="DayInWeekOrder" class="form-control week-days" style="width: 100px;display:inline"></select>');
-        $(monthlyOption2).append("&nbsp;of every&nbsp;");
+        $(monthlyOption2).append("&nbsp;каждого&nbsp;");
         $("<input/>", {id: "EveryMonthInput", type: "text", class: "form-control", value: "1", style: "width: 40px;display:inline;"}).appendTo(monthlyOption2);
-        $(monthlyOption2).append("&nbsp;month(s)");
+        $(monthlyOption2).append("&nbsp;месяца");
         $(monthlyOption2).appendTo(monthlyTab);
-        $(monthlyTab).append("Start time&nbsp;");
+        $(monthlyTab).append("Время&nbsp;");
         $(monthlyTab).append('<select id="MonthlyHours" class="form-control hours" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(monthlyTab).append('<select id="MonthlyMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(monthlyTab).appendTo(tabContent);
@@ -137,20 +137,20 @@
         var yearlyTab = $("<div/>", {"class": "tab-pane", id: "Yearly"});
         var yearlyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "YearlyRadio", checked: "checked"}).appendTo(yearlyOption1);
-        $(yearlyOption1).append("&nbsp;Every&nbsp");
+        $(yearlyOption1).append("&nbsp;Каждый&nbsp");
         $(yearlyOption1).append('<select id="MonthsOfYear" class="form-control months" style="width: 150px;display:inline"></select>');
-        $(yearlyOption1).append("&nbsp;in day&nbsp;");
+        $(yearlyOption1).append("&nbsp;день&nbsp;");
         $("<input/>", {id: "YearInput", type: "text", class: "form-control", value: "1", style: "width: 40px;display:inline;"}).appendTo(yearlyOption1);
         $(yearlyOption1).appendTo(yearlyTab);
         var yearlyOption2 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "2", name: "YearlyRadio"}).appendTo(yearlyOption2);
-        $(yearlyOption2).append("&nbsp;The&nbsp;");
+        $(yearlyOption2).append("&nbsp;В&nbsp;");
         $(yearlyOption2).append('<select id="DayOrderInYear" class="form-control day-order-in-month" style="width: 90px;display:inline;margin-right:5px;"></select>');
         $(yearlyOption2).append('<select id="DayWeekForYear" class="form-control week-days" style="width: 100px;display:inline"></select>');
-        $(yearlyOption2).append("&nbsp;of&nbsp;");
+        $(yearlyOption2).append("&nbsp;месяц&nbsp;");
         $(yearlyOption2).append('<select id="MonthsOfYear2" class="form-control months" style="width: 110px;display:inline"></select>');
         $(yearlyOption2).appendTo(yearlyTab);
-        $(yearlyTab).append("Start time&nbsp;");
+        $(yearlyTab).append("Время&nbsp;");
         $(yearlyTab).append('<select id="YearlyHours" class="form-control hours" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(yearlyTab).append('<select id="YearlyMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(yearlyTab).appendTo(tabContent);
@@ -176,18 +176,18 @@
 
         function fillInMonths() {
             var days = [
-                {text: "January", val: "1"},
-                {text: "February", val: "2"},
-                {text: "March", val: "3"},
-                {text: "April", val: "4"},
-                {text: "May", val: "5"},
-                {text: "June", val: "6"},
-                {text: "July", val: "7"},
-                {text: "August", val: "8"},
-                {text: "September", val: "9"},
-                {text: "October", val: "10"},
-                {text: "Novermber", val: "11"},
-                {text: "December", val: "12"}
+                {text: "Январь", val: "1"},
+                {text: "Февраль", val: "2"},
+                {text: "Март", val: "3"},
+                {text: "Апрель", val: "4"},
+                {text: "Май", val: "5"},
+                {text: "Июнь", val: "6"},
+                {text: "Июль", val: "7"},
+                {text: "Август", val: "8"},
+                {text: "Сентябрь", val: "9"},
+                {text: "Октябрь", val: "10"},
+                {text: "Ноябрь", val: "11"},
+                {text: "Декабрь", val: "12"}
             ];
             $(".months").each(function () {
                 fillOptions(this, days);
@@ -214,13 +214,13 @@
 
         function fillInWeekDays() {
             var days = [
-                {text: "Monday", val: "MON"},
-                {text: "Tuesday", val: "TUE"},
-                {text: "Wednesday", val: "WED"},
-                {text: "Thursday", val: "THU"},
-                {text: "Friday", val: "FRI"},
-                {text: "Saturday", val: "SAT"},
-                {text: "Sunday", val: "SUN"}
+                {text: "Понедельник", val: "MON"},
+                {text: "Вторник", val: "TUE"},
+                {text: "Среда", val: "WED"},
+                {text: "Четверг", val: "THU"},
+                {text: "Пятница", val: "FRI"},
+                {text: "Суббота", val: "SAT"},
+                {text: "Воскресенье", val: "SUN"}
             ];
             $(".week-days").each(function () {
                 fillOptions(this, days);
@@ -229,10 +229,10 @@
 
         function fillDayWeekInMonth() {
             var days = [
-                {text: "First", val: "1"},
-                {text: "Second", val: "2"},
-                {text: "Third", val: "3"},
-                {text: "Fourth", val: "4"}
+                {text: "Первый", val: "1"},
+                {text: "Второй", val: "2"},
+                {text: "Третий", val: "3"},
+                {text: "Четвёртый", val: "4"}
             ];
             $(".day-order-in-month").each(function () {
                 fillOptions(this, days);
