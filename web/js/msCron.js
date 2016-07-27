@@ -30,18 +30,21 @@
             activeTab: ""
         }, options);
 
+        var self = this;
+        var containerId = $(self).attr('id');
+
         var mainDiv = $("<div/>", {id: "CronGenMainDiv", style: "padding:15px;"});
         var topMenu = $("<ul/>", {"class": "nav nav-tabs", id: "msCronTabs"});
-        $('<li/>', {'class': 'active'}).html($('<a id="msMinutesTab" role="tab" data-toggle="tab" href="#Minutes">Минуты</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msHourlyTab" role="tab" data-toggle="tab" href="#Hourly">Часы</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msDailyTab" role="tab" data-toggle="tab" href="#Daily">Дни</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msWeeklyTab" role="tab" data-toggle="tab" href="#Weekly">Недели</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msMonthlyTab" role="tab" data-toggle="tab" href="#Monthly">Месяцы</a>')).appendTo(topMenu);
-        $('<li/>').html($('<a id="msYearlyTab" role="tab" data-toggle="tab" href="#Yearly">Годы</a>')).appendTo(topMenu);
+        $('<li/>', {'class': 'active'}).html($('<a id="msMinutesTab" role="tab" data-toggle="tab" href="#' + containerId + 'Minutes">Минуты</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msHourlyTab" role="tab" data-toggle="tab" href="#' + containerId + 'Hourly">Часы</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msDailyTab" role="tab" data-toggle="tab" href="#' + containerId + 'Daily">Дни</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msWeeklyTab" role="tab" data-toggle="tab" href="#' + containerId + 'Weekly">Недели</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msMonthlyTab" role="tab" data-toggle="tab" href="#' + containerId + 'Monthly">Месяцы</a>')).appendTo(topMenu);
+        $('<li/>').html($('<a id="msYearlyTab" role="tab" data-toggle="tab" href="#' + containerId + 'Yearly">Годы</a>')).appendTo(topMenu);
         $(topMenu).appendTo(mainDiv);
         var tabContent = $("<div/>", {"class": "tab-content"});
         //creating the minutesTab
-        var minutesTab = $("<div/>", {"class": "tab-pane active", id: "Minutes"});
+        var minutesTab = $("<div/>", {"class": "tab-pane active", id: containerId+"Minutes"});
         var minutesTabSection = $("<div/>", {"style": "padding:15px"});
         $(minutesTabSection).append("Каждую&nbsp;");
         $("<input/>", {id: "MinutesInput", type: "text", value: "1", class: "form-control", style: "width: 40px;display:inline"}).appendTo(minutesTabSection);
@@ -49,7 +52,7 @@
         $(minutesTabSection).appendTo(minutesTab);
         $(minutesTab).appendTo(tabContent);
         //creating the hourlyTab
-        var hourlyTab = $("<div/>", {"class": "tab-pane", id: "Hourly"});
+        var hourlyTab = $("<div/>", {"class": "tab-pane", id: containerId+"Hourly"});
         var hourlyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "HourlyRadio", checked: "checked"}).appendTo(hourlyOption1);
         $(hourlyOption1).append("&nbsp;Каждый&nbsp;");
@@ -64,12 +67,12 @@
         $(hourlyOption2).appendTo(hourlyTab);
         $(hourlyTab).appendTo(tabContent);
         //creating the dailyTab
-        var dailyTab = $("<div/>", {"class": "tab-pane", id: "Daily"});
+        var dailyTab = $("<div/>", {"class": "tab-pane", id: containerId+"Daily"});
         var dailyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "DailyRadio", checked: "checked"}).appendTo(dailyOption1);
         $(dailyOption1).append("&nbsp;Каждый&nbsp;");
         $("<input/>", {id: "DaysInput", type: "text", value: "1", class: "form-control", style: "width: 40px;display:inline"}).appendTo(dailyOption1);
-        $(dailyOption1).append("&nbsp;день");
+        $(dailyOption1).append("&nbsp;день недели");
         $(dailyOption1).appendTo(dailyTab);
         var dailyOption2 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "2", name: "DailyRadio"}).appendTo(dailyOption2);
@@ -80,7 +83,7 @@
         $(dailyTab).append('<select id="DailyMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(dailyTab).appendTo(tabContent);
         //creating the weeklyTab
-        var weeklyTab = $("<div/>", {"class": "tab-pane", id: "Weekly"});
+        var weeklyTab = $("<div/>", {"class": "tab-pane", id: containerId+"Weekly"});
         var weeklyWell = $("<div/>", {"style": "padding:15px"});
         var monLabel = $("<label/>", {"class": "checkbox-inline", "style": "margin-right:5px"}).appendTo(weeklyWell);
         $("<input/>", {type: "checkbox", value: "MON"}).appendTo(monLabel);
@@ -111,7 +114,7 @@
         $(weeklyTab).append('<select id="WeeklyMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(weeklyTab).appendTo(tabContent);
         //creating the monthlyTab
-        var monthlyTab = $("<div/>", {"class": "tab-pane", id: "Monthly"});
+        var monthlyTab = $("<div/>", {"class": "tab-pane", id: containerId+"Monthly"});
         var monthlyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "MonthlyRadio", checked: "checked"}).appendTo(monthlyOption1);
         $(monthlyOption1).append("&nbsp;День&nbsp");
@@ -134,7 +137,7 @@
         $(monthlyTab).append('<select id="MonthlyMinutes" class="form-control minutes" style="width: 80px;display:inline;margin-right:5px;"></select>');
         $(monthlyTab).appendTo(tabContent);
         //creating the yearlyTab
-        var yearlyTab = $("<div/>", {"class": "tab-pane", id: "Yearly"});
+        var yearlyTab = $("<div/>", {"class": "tab-pane", id: containerId+"Yearly"});
         var yearlyOption1 = $("<div/>", {"style": "padding:15px"});
         $("<input/>", {type: "radio", value: "1", name: "YearlyRadio", checked: "checked"}).appendTo(yearlyOption1);
         $(yearlyOption1).append("&nbsp;Каждый&nbsp");
@@ -162,10 +165,11 @@
         fillInWeekDays();
         fillInMonths();
 
-        $("#CronGenMainDiv select,input").change(function (e) {
+        // console.log($(this).find("#CronGenMainDiv select,input"));
+        $(self).find("#CronGenMainDiv select,input").change(function (e) {
             generate();
         });
-        $("#CronGenMainDiv input").focus(function (e) {
+        $(self).find("#CronGenMainDiv input").focus(function (e) {
             generate();
         });
         if (options.setCron !== "") {
@@ -189,7 +193,7 @@
                 {text: "Ноябрь", val: "11"},
                 {text: "Декабрь", val: "12"}
             ];
-            $(".months").each(function () {
+            $(self).find(".months").each(function () {
                 fillOptions(this, days);
             });
         }
@@ -202,11 +206,11 @@
         function fillDataOfMinutesAndHoursSelectOptions() {
             for (var i = 0; i < 60; i++) {
                 if (i < 24) {
-                    $(".hours").each(function () {
+                    $(self).find(".hours").each(function () {
                         $(this).append(timeSelectOption(i));
                     });
                 }
-                $(".minutes").each(function () {
+                $(self).find(".minutes").each(function () {
                     $(this).append(timeSelectOption(i));
                 });
             }
@@ -222,7 +226,7 @@
                 {text: "Суббота", val: "SAT"},
                 {text: "Воскресенье", val: "SUN"}
             ];
-            $(".week-days").each(function () {
+            $(self).find(".week-days").each(function () {
                 fillOptions(this, days);
             });
         }
@@ -234,7 +238,7 @@
                 {text: "Третий", val: "3"},
                 {text: "Четвёртый", val: "4"}
             ];
-            $(".day-order-in-month").each(function () {
+            $(self).find(".day-order-in-month").each(function () {
                 fillOptions(this, days);
             });
         }
@@ -251,63 +255,63 @@
 
         function generate() {
 
-            var activeTab = $("ul#msCronTabs li.active a").prop("id");
+            var activeTab = $(self).find("ul#msCronTabs li.active a").prop("id");
             var results = "", activeTab;
             switch (activeTab) {
                 case "msMinutesTab":
-                    results = "0 0/" + $("#MinutesInput").val() + " * 1/1 * ? *";
+                    results = "0 0/" + $(self).find("#MinutesInput").val() + " * 1/1 * ? *";
                     activeTab = "MINUTES";
                     break;
                 case "msHourlyTab":
-                    switch ($("input:radio[name=HourlyRadio]:checked").val()) {
+                    switch ($(self).find("input:radio[name=HourlyRadio]:checked").val()) {
                         case "1":
-                            results = "0 0 0/" + $("#HoursInput").val() + " 1/1 * ? *";
+                            results = "0 0 0/" + $(self).find("#HoursInput").val() + " 1/1 * ? *";
                             break;
                         case "2":
-                            results = "0 " + Number($("#AtMinutes").val()) + " " + Number($("#AtHours").val()) + " 1/1 * ? *";
+                            results = "0 " + Number($(self).find("#AtMinutes").val()) + " " + Number($(self).find("#AtHours").val()) + " 1/1 * ? *";
                             break;
                     }
                     activeTab = "HOURLY";
                     break;
                 case "msDailyTab":
-                    switch ($("input:radio[name=DailyRadio]:checked").val()) {
+                    switch ($(self).find("input:radio[name=DailyRadio]:checked").val()) {
                         case "1":
-                            results = "0 " + Number($("#DailyMinutes").val()) + " " + Number($("#DailyHours").val()) + " 1/" + $("#DaysInput").val() + " * ? *";
+                            results = "0 " + Number($(self).find("#DailyMinutes").val()) + " " + Number($(self).find("#DailyHours").val()) + " 1/" + $(self).find("#DaysInput").val() + " * ? *";
                             break;
                         case "2":
-                            results = "0 " + Number($("#DailyMinutes").val()) + " " + Number($("#DailyHours").val()) + " ? * MON-FRI *";
+                            results = "0 " + Number($(self).find("#DailyMinutes").val()) + " " + Number($(self).find("#DailyHours").val()) + " ? * MON-FRI *";
                             break;
                     }
                     activeTab = "DAILY";
                     break;
                 case "msWeeklyTab":
                     var selectedDays = "";
-                    $("#Weekly input:checkbox:checked").each(function () {
+                    $(self).find("#"+containerId+"Weekly input:checkbox:checked").each(function () {
                         selectedDays += $(this).val() + ",";
                     });
                     if (selectedDays.length > 0)
                         selectedDays = selectedDays.substr(0, selectedDays.length - 1);
-                    results = "0 " + Number($("#WeeklyMinutes").val()) + " " + Number($("#WeeklyHours").val()) + " ? * " + selectedDays + " *";
+                    results = "0 " + Number($(self).find("#WeeklyMinutes").val()) + " " + Number($(self).find("#WeeklyHours").val()) + " ? * " + selectedDays + " *";
                     activeTab = "WEEKLY";
                     break;
                 case "msMonthlyTab":
-                    switch ($("input:radio[name=MonthlyRadio]:checked").val()) {
+                    switch ($(self).find("input:radio[name=MonthlyRadio]:checked").val()) {
                         case "1":
-                            results = "0 " + Number($("#MonthlyMinutes").val()) + " " + Number($("#MonthlyHours").val()) + " " + $("#DayOfMOnthInput").val() + " 1/" + $("#MonthInput").val() + " ? *";
+                            results = "0 " + Number($(self).find("#MonthlyMinutes").val()) + " " + Number($(self).find("#MonthlyHours").val()) + " " + $(self).find("#DayOfMOnthInput").val() + " 1/" + $(self).find("#MonthInput").val() + " ? *";
                             break;
                         case "2":
-                            results = "0 " + Number($("#MonthlyMinutes").val()) + " " + Number($("#MonthlyHours").val()) + " ? 1/" + Number($("#EveryMonthInput").val()) + " " + $("#DayInWeekOrder").val() + "#" + $("#WeekDay").val() + " *";
+                            results = "0 " + Number($(self).find("#MonthlyMinutes").val()) + " " + Number($(self).find("#MonthlyHours").val()) + " ? 1/" + Number($(self).find("#EveryMonthInput").val()) + " " + $(self).find("#DayInWeekOrder").val() + "#" + $(self).find("#WeekDay").val() + " *";
                             break;
                     }
                     activeTab = "MONTHLY";
                     break;
                 case "msYearlyTab":
-                    switch ($("input:radio[name=YearlyRadio]:checked").val()) {
+                    switch ($(self).find("input:radio[name=YearlyRadio]:checked").val()) {
                         case "1":
-                            results = "0 " + Number($("#YearlyMinutes").val()) + " " + Number($("#YearlyHours").val()) + " " + $("#YearInput").val() + " " + $("#MonthsOfYear").val() + " ? *";
+                            results = "0 " + Number($(self).find("#YearlyMinutes").val()) + " " + Number($(self).find("#YearlyHours").val()) + " " + $(self).find("#YearInput").val() + " " + $(self).find("#MonthsOfYear").val() + " ? *";
                             break;
                         case "2":
-                            results = "0 " + Number($("#YearlyMinutes").val()) + " " + Number($("#YearlyHours").val()) + " ? " + $("#MonthsOfYear2").val() + " " + $("#DayWeekForYear").val() + "#" + $("#DayOrderInYear").val() + " *";
+                            results = "0 " + Number($(self).find("#YearlyMinutes").val()) + " " + Number($(self).find("#YearlyHours").val()) + " ? " + $(self).find("#MonthsOfYear2").val() + " " + $(self).find("#DayWeekForYear").val() + "#" + $(self).find("#DayOrderInYear").val() + " *";
                             break;
                     }
                     activeTab = "YEARLY";
@@ -324,83 +328,83 @@
             if (validExp.length === 7) {
                 switch (actTab) {
                     case "MINUTES":
-                        $('#msCronTabs a[href="#Minutes"]').tab('show');
+                        $(self).find('#msCronTabs a[href="#Minutes"]').tab('show');
                         expression = expression.match(/\d+/g);
-                        $("#MinutesInput").val(expression[2]);
+                        $(self).find("#MinutesInput").val(expression[2]);
                         break
                     case "HOURLY":
-                        $('#msCronTabs a[href="#Hourly"]').tab('show');
+                        $(self).find('#msCronTabs a[href="#Hourly"]').tab('show');
                         expression = expression.match(/\d+/g);
                         if (expression.length === 6) {
-                            $("#HoursInput").val(expression[3]);
-                            $("input:radio[name=HourlyRadio][value=1]").prop("checked", true);
+                            $(self).find("#HoursInput").val(expression[3]);
+                            $(self).find("input:radio[name=HourlyRadio][value=1]").prop("checked", true);
                         } else {
-                            $("#AtMinutes ").val(expression[1]);
-                            $("#AtHours ").val(expression[2]);
-                            $("input:radio[name=HourlyRadio][value=2]").prop("checked", true);
+                            $(self).find("#AtMinutes ").val(expression[1]);
+                            $(self).find("#AtHours ").val(expression[2]);
+                            $(self).find("input:radio[name=HourlyRadio][value=2]").prop("checked", true);
                         }
                         break
                     case "DAILY":
-                        $('#msCronTabs a[href="#Daily"]').tab('show');
+                        $(self).find('#msCronTabs a[href="#Daily"]').tab('show');
                         expression = expression.match(/\d+/g);
                         if (expression.length === 5) {
-                            $("#DaysInput").val(expression[4]);
-                            $("input:radio[name=DailyRadio][value=1]").prop("checked", true);
+                            $(self).find("#DaysInput").val(expression[4]);
+                            $(self).find("input:radio[name=DailyRadio][value=1]").prop("checked", true);
                         } else {
 
-                            $("input:radio[name=DailyRadio][value=2]").prop("checked", true);
+                            $(self).find("input:radio[name=DailyRadio][value=2]").prop("checked", true);
                         }
-                        $("#DailyHours ").val(expression[2]);
-                        $("#DailyMinutes ").val(expression[1]);
+                        $(self).find("#DailyHours ").val(expression[2]);
+                        $(self).find("#DailyMinutes ").val(expression[1]);
 
                         break
                     case "WEEKLY":
-                        $('#msCronTabs a[href="#Weekly"]').tab('show');
+                        $(self).find('#msCronTabs a[href="#Weekly"]').tab('show');
                         var weekdays = expression;
                         expression = expression.match(/\d+/g);
-                        $("#WeeklyMinutes").val(expression[1]);
-                        $("#WeeklyHours").val(expression[2]);
-                        $("#Weekly input:checkbox").each(function () {
+                        $(self).find("#WeeklyMinutes").val(expression[1]);
+                        $(self).find("#WeeklyHours").val(expression[2]);
+                        $(self).find("#Weekly input:checkbox").each(function () {
                             if (weekdays.indexOf($(this).val()) >= 0) {
                                 $(this).prop('checked', true);
                             }
                         });
                         break
                     case "MONTHLY":
-                        $('#msCronTabs a[href="#Monthly"]').tab('show');
+                        $(self).find('#msCronTabs a[href="#Monthly"]').tab('show');
                         if (expression.indexOf('#') !== -1) {
-                            $("input:radio[name=MonthlyRadio][value=2]").prop("checked", true);
-                            $("#DayInWeekOrder").val(expression.substring(expression.indexOf('#'), expression.indexOf('#') - 3));
+                            $(self).find("input:radio[name=MonthlyRadio][value=2]").prop("checked", true);
+                            $(self).find("#DayInWeekOrder").val(expression.substring(expression.indexOf('#'), expression.indexOf('#') - 3));
                             expression = expression.match(/\d+/g);
-                            $("#WeekDay").val(expression[5]);
-                            $("#EveryMonthInput").val(expression[4]);
+                            $(self).find("#WeekDay").val(expression[5]);
+                            $(self).find("#EveryMonthInput").val(expression[4]);
                         } else {
                             expression = expression.match(/\d+/g);
-                            $("#DayOfMOnthInput").val(expression[3]);
-                            $("#MonthInput").val(expression[5]);
-                            $("input:radio[name=MonthlyRadio][value=1]").prop("checked", true);
+                            $(self).find("#DayOfMOnthInput").val(expression[3]);
+                            $(self).find("#MonthInput").val(expression[5]);
+                            $(self).find("input:radio[name=MonthlyRadio][value=1]").prop("checked", true);
                         }
-                        $("#MonthlyHours").val(expression[1]);
-                        $("#MonthlyMinutes").val(expression[2]);
+                        $(self).find("#MonthlyHours").val(expression[1]);
+                        $(self).find("#MonthlyMinutes").val(expression[2]);
 
 
                         break
                     case "YEARLY":
-                        $('#msCronTabs a[href="#Yearly"]').tab('show');
+                        $(self).find('#msCronTabs a[href="#Yearly"]').tab('show');
                         if (expression.indexOf('#') !== -1) {
-                            $("input:radio[name=YearlyRadio][value=2]").prop("checked", true);
-                            $("#DayWeekForYear").val(expression.substring(expression.indexOf('#'), expression.indexOf('#') - 3));
+                            $(self).find("input:radio[name=YearlyRadio][value=2]").prop("checked", true);
+                            $(self).find("#DayWeekForYear").val(expression.substring(expression.indexOf('#'), expression.indexOf('#') - 3));
                             expression = expression.match(/\d+/g);
-                            $("#DayOrderInYear").val(expression[4]);
-                            $("#MonthsOfYear2").val(expression[3]);
+                            $(self).find("#DayOrderInYear").val(expression[4]);
+                            $(self).find("#MonthsOfYear2").val(expression[3]);
                         } else {
                             expression = expression.match(/\d+/g);
-                            $("#MonthsOfYear").val(expression[4]);
-                            $("#YearInput").val(expression[3]);
-                            $("input:radio[name=YearlyRadio][value=1]").prop("checked", true);
+                            $(self).find("#MonthsOfYear").val(expression[4]);
+                            $(self).find("#YearInput").val(expression[3]);
+                            $(self).find("input:radio[name=YearlyRadio][value=1]").prop("checked", true);
                         }
-                        $("#YearlyHours").val(expression[2]);
-                        $("#YearlyMinutes").val(expression[1]);
+                        $(self).find("#YearlyHours").val(expression[2]);
+                        $(self).find("#YearlyMinutes").val(expression[1]);
 
                         break
                 }
